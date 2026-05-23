@@ -9,9 +9,6 @@ del /f .git\index.lock 2>nul
 del /f .git\HEAD.lock 2>nul
 del /f .git\config.lock 2>nul
 
-echo Setting Gitee auth...
-git remote set-url gitee https://xuem:372f7e3949ad5a53dd257b015b4d318a@gitee.com/xuem/xiangmu.git
-
 echo Adding files...
 git add .
 
@@ -24,7 +21,8 @@ git push origin main
 
 echo.
 echo Pushing to Gitee...
-git push gitee main
+set GIT_ASKPASS=echo
+git -c credential.helper= -c credential.helper=""f() { echo username=xuem; echo password=372f7e3949ad5a53dd257b015b4d318a; }; f"" push https://gitee.com/xuem/xiangmu.git main
 
 echo.
 echo ========================================
