@@ -9,9 +9,8 @@ del /f .git\index.lock 2>nul
 del /f .git\HEAD.lock 2>nul
 del /f .git\config.lock 2>nul
 
-echo Clearing old Gitee credentials...
-cmdkey /delete:git:https://gitee.com 2>nul
-cmdkey /delete:LegacyGeneric:target=gitee.com 2>nul
+echo Resetting Gitee remote...
+git remote set-url gitee https://gitee.com/xuem/xiangmu.git
 
 echo Adding files...
 git add .
@@ -26,11 +25,10 @@ git push origin main
 echo.
 echo Pushing to Gitee...
 echo.
-echo When prompted:
-echo   Username: xuem
-echo   Password: 372f7e3949ad5a53dd257b015b4d318a
+echo Username: xuem
+echo Password: 372f7e3949ad5a53dd257b015b4d318a
 echo.
-git push gitee main
+git -c credential.helper= push gitee main
 
 echo.
 echo ========================================
