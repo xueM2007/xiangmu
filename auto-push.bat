@@ -7,6 +7,10 @@ echo.
 echo Cleaning stale locks...
 del /f .git\index.lock 2>nul
 del /f .git\HEAD.lock 2>nul
+del /f .git\config.lock 2>nul
+
+echo Setting Gitee auth...
+git remote set-url gitee https://xuem:372f7e3949ad5a53dd257b015b4d318a@gitee.com/xuem/xiangmu.git
 
 echo Adding files...
 git add .
